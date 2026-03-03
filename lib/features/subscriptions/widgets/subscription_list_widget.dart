@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sub_control/features/subscriptions/domain/entities/subscription.dart';
 
 class SubscriptionListWidget extends StatelessWidget {
@@ -12,7 +13,9 @@ class SubscriptionListWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         return ListTile(
           title: Text(subscription[index].name),
-          subtitle: Text('Vence dia: ${subscription[index].dueDate}'),
+          subtitle: Text(
+            'Vencimento: ${DateFormat('dd/MM/y').format(subscription[index].dueDate)}',
+          ),
           trailing: Text('R\$ ${subscription[index].price.toStringAsFixed(2)}'),
         );
       },
